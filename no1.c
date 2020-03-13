@@ -5,11 +5,13 @@
 #include<stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
 #include <syslog.h>
 #include <time.h>
+#include <errno.h>
 
 bool isBintang(char argku[]){
     for (int i = 0 ; i < strlen(argku) ; i++){
@@ -30,23 +32,27 @@ bool isNumber(char argku[]){
 
 
 int main(int argc, char *argv[]){
-    int arrTIme[4];
+    int arrTime[4];
     printf("arg count %d\n",argc);
-    for(int i=1;i<argc-1;i++){
+     for(int i=0;i<argc;i++){
         printf("i = %d -> %s\n",i,argv[i]);
+    }
+    
+    for(int i=1;i<argc-1;i++){
+        //printf("i = %d -> %s\n",i,argv[i]);
         if(isNumber(argv[i])){
-            arrTIme[i-1]=atoi(argv[i]);
+            arrTime[i-1]=atoi(argv[i]);
         }
         else if(isBintang(argv[i]))
         {
-            arrTIme[i-1]=-1;
+            arrTime[i-1]=-1;
         }
         else{
             printf("Argumen TIdak Valid ada penyusup\n");
             exit(EXIT_FAILURE);
         }
     }
-    if(arrTIme[0]<0 || arrTIme[0]>59 || arrTIme[1]<0 || arrTIme[1]>59 || arrTIme[2]<0 || arrTIme[2]>23){
+    if(arrTime[0]<0 || arrTime[0]>59 || arrTime[1]<0 || arrTime[1]>59 || arrTime[2]<0 || arrTime[2]>23){
         printf("Argumen TIdak Valid Gak ada Jam segitu anjir\n");
         exit(EXIT_FAILURE);
     }
@@ -74,25 +80,41 @@ int main(int argc, char *argv[]){
     
 
     //<----DAEMON---->
-    /*
-    pid_t pid,sid;
-    pid =fork();
-    if(pid<0){
-       exit(EXIT_FAILURE);
-    } 
-    unmask(0);
-    sid=setsid();
-    if(sid<0){
-        exit(EXIT_FAILURE);
-    }
-    if(chdir("/")<0){
-        exit(EXIT_FAILURE);
-    }
-    close(stdin);
-    close(stdout);
-    close(stderr);
-    while(1){
+    
+    // pid_t pid,sid;
+    // pid =fork();
+    // if(pid<0){
+    //    exit(EXIT_FAILURE);
+    // } 
+    // umask(0);
+    // sid=setsid();
+    // if(sid<0){
+    //     exit(EXIT_FAILURE);
+    // }
+    // if(chdir("/")<0){
+    //     exit(EXIT_FAILURE);
+    // }
+    // umask(0);
+    // close(STDIN_FILENO);
+    //close(STDOUT_FILENO);
+    //close(STDERR_FILENO);
+    // while(1){
+    //     time_t rawTime;
+    //     struct tm *timeData;
+    //     rawTime=time(&rawTime);
+    //     timeData=localtime(&rawTime);
+    //     printf("%s",argv[4]);
+    //     if((timeData->tm_sec == arrTime[0] || arrTime[0] == -1) && (timeData->tm_min == arrTime[1] || arrTime[1] == -1) || (timeData->tm_hour == arrTime[2] || arrTime[2] == -1)){
+    //         pid_t child1;
+    //         child1=fork();
+    //         if(child1==0){
+    //             //printf("%s",argv[4]);
+    //             char *arg[4] = {"bashs", argv[4], NULL};
+    //             execv("/bin/bash",arg);
+    //         }
+    //     }
+    //     sleep(1);
 
-    }
-    */
+    // }
+    
 }
