@@ -61,7 +61,7 @@ while(1){
             while ((wait(&status)) > 0);
                 
 	            int i;
-	            for(i=0;i<3;i++){
+	            for(i=0;i<20;i++){
 		              chdir(folder);
 		              time_t rawtime2;
   		            struct tm *info2;
