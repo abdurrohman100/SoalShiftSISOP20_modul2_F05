@@ -1,2 +1,1 @@
-
-echo $(date) >> /home/seijaku/Documents/Sisop/SoalShiftSISOP20_modul2_F05/log.txt
+echo $(date) >> /home/seijaku/Downloads/SoalShiftSISOP20_modul2_F05-master/soal1/log.txt

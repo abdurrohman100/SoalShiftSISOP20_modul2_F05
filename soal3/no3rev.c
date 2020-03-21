@@ -42,9 +42,10 @@ int main() {
     }
     else
     {
-        wait(&status);
+        while ((wait(&status)) > 0);
         printf("Dealy 5 Second\n");
         sleep(5);
+        while ((wait(&status)) > 0);
         printf("Make-----Sedaaap Directory at %s\n",sedaaap);
         char *argv[] = {"mkdir", "-p", sedaaap, NULL};
         execv("/bin/mkdir",argv);
