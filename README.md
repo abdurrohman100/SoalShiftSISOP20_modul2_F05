@@ -149,12 +149,6 @@ Untuk mengetesnya kami membuat hehe.sh yang isinya mencetak waktu eksekusi scrip
 ```
 echo $(date) >> /home/seijaku/Downloads/SoalShiftSISOP20_modul2_F05-master/soal1/log.txt
 ```
-contoh penjalananya adalah
-
-hasilnya
-
-
-
 
 
 ## Penjelasan Penyelesaian Soal nomor 2
