@@ -167,4 +167,5 @@ if(mode==2){
 Terakhir pada soal no 2, kita membuat fungsi dalam program yang gunanya untuk mengenerate sebuah program killer. Fungsi akan 
 menerima mode apa yang dijalankan user. Jika mode 2, maka akan dibuat file .c yang isinya akan melakukan execv kill parrent dari
 program utama. Sedangkan jika mode 1, maka akan dibuat file .c yang isinya akan melakukan killall terhadap program no2.
-Setelah itu fungsi akan melakukan fork yang isinya menjalankan gcc untuk mengcompile file killer.c tersebut. 
+Setelah itu fungsi akan melakukan fork yang isinya menjalankan gcc untuk mengcompile file killer.c tersebut. Dalam program c killer yg dibuat program killer akan melakukan fork, child akan melakukan kill atau killall terhadap program utama sedangkan parentnnya akan
+melakukan remove() terhadap program killer yang dibuat (remove killer.c dan killer.exe)
