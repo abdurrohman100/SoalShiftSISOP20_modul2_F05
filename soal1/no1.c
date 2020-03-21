@@ -33,15 +33,15 @@ int main(int argc, char *argv[]){
         else if(isNumber(argv[i])){
             arrTime[i-1]=atoi(argv[i]);
         }
-        else{
-            printf("Argumen Tidak Valid ada char penyusup\n");
-            exit(EXIT_FAILURE);
-        }
+        // else{
+        //     printf("Argumen Tidak Valid ada char penyusup\n");
+        //     exit(EXIT_FAILURE);
+        // }
     }
-    if(arrTime[0]<-1 || arrTime[0]>59 || arrTime[1]<-1 || arrTime[1]>59 || arrTime[2]<-1 || arrTime[2]>23){
-        printf("Argumen Tidak Valid Waktu yang anda masukkan melebihi waktu dunia manusia\n");
-        exit(EXIT_FAILURE);
-    }
+    // if(arrTime[0]<-1 || arrTime[0]>59 || arrTime[1]<-1 || arrTime[1]>59 || arrTime[2]<-1 || arrTime[2]>23){
+    //     printf("Argumen Tidak Valid Waktu yang anda masukkan melebihi waktu dunia manusia\n");
+    //     exit(EXIT_FAILURE);
+    // }
     /*<----DEBUG INPUT TIME---->
         //printf("%d %d %d\n",arrTime[0],arrTime[1],arrTime[2]); 
     */

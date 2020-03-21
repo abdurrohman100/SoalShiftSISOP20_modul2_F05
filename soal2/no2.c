@@ -48,7 +48,7 @@ while(1){
          exit(EXIT_FAILURE);
       }
       if(child2_id == 0) {
-    	   pid_t child3_id;
+    	 pid_t child3_id;
       	 child3_id = fork();
       	 if(child3_id<0){
             exit(EXIT_FAILURE);
@@ -109,10 +109,10 @@ void killer (int mode){
 if(mode==2){
     char pid[80];
     sprintf(pid,"\"%d\"",getpid());
-    char command[100000] = "umask(0);\nprintf(\"killed\");\nexecl(\"/bin/kill\", \"kill\",";
+    char command[100000] = "umask(0);\nprintf(\"killed\");\nint status;\npid_t child_id;\nchild_id = fork();\nif(child_id == 0){\nexecl(\"/bin/kill\", \"kill\",";
     strcat(command,pid);
-    strcat(command," ,NULL)");
-    fprintf(killer,"#include <stdlib.h>\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <sys/prctl.h>\n#include <unistd.h>\n#include <wait.h>\n#include <stdio.h>\n#include <string.h>\n#include <time.h>\nint main(){%s;}",command);
+    strcat(command," ,NULL);}\nelse{while ((wait(&status)) > 0);\nremove(\"killer.c\");\nremove(\"killer.exe\");}");
+    fprintf(killer,"#include <stdlib.h>\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <sys/prctl.h>\n#include <unistd.h>\n#include <wait.h>\n#include <stdio.h>\n#include <string.h>\n#include <time.h>\nint main(){%s}",command);
     fclose(killer);
     pid_t childkiller = fork();
   if(childkiller==0){
@@ -122,8 +122,8 @@ if(mode==2){
   while ((wait(&status)) > 0);
 }
   else{
-    char command[100000] = "umask(0);\nprintf(\"killed\");\nexecl(\"/usr/bin/killall\", \"killall\",\"testno2.exe\",NULL)";
-    fprintf(killer,"#include <stdlib.h>\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <sys/prctl.h>\n#include <unistd.h>\n#include <wait.h>\n#include <stdio.h>\n#include <string.h>\n#include <time.h>\nint main(){%s;}",command);
+    char command[100000] = "umask(0);\nprintf(\"killed\");\nint status;\npid_t child_id;\nchild_id = fork();\nif(child_id == 0){\nexecl(\"/usr/bin/killall\", \"killall\",\"testno2.exe\",NULL);}\nelse{while ((wait(&status)) > 0);\nremove(\"killer.c\");\nremove(\"killer.exe\");}";
+    fprintf(killer,"#include <stdlib.h>\n#include <sys/types.h>\n#include <sys/stat.h>\n#include <sys/prctl.h>\n#include <unistd.h>\n#include <wait.h>\n#include <stdio.h>\n#include <string.h>\n#include <time.h>\nint main(){%s}",command);
     fclose(killer);
     pid_t childkiller = fork();
   if(childkiller==0){
