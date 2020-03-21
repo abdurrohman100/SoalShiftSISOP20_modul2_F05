@@ -93,7 +93,7 @@ Karena harus berjalan di background maka program akan dibuat menjadi daemon
     close(STDERR_FILENO);
     int status;
 ```
-    Untuk Program utamanya sendiri berada di dalam while. Pertama adalah mendapatkan waktu dari system menggunakan time_t dengan fungsi time(). Kemudian mengubahnya menjadi format localtime dengan fungsi localtime(), localtime() sendiri mengembalikan sebuah struct tm. Dari struct tm tersebut kita melakukan pengecekan dengan nilai di arrTIme yang berkolerasi
+Untuk Program utamanya sendiri berada di dalam while. Pertama adalah mendapatkan waktu dari system menggunakan time_t dengan fungsi time(). Kemudian mengubahnya menjadi format localtime dengan fungsi localtime(), localtime() sendiri mengembalikan sebuah struct tm. Dari struct tm tersebut kita melakukan pengecekan dengan nilai di arrTIme yang berkolerasi
 ```
     while(1){
         time_t rawTime;
